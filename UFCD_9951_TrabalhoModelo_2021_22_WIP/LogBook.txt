@@ -1,0 +1,31 @@
+﻿Bases de dados
+create table alunos(
+nprocesso int identity primary key,
+nome varchar(100) not null check (len(nome)>=3),
+data_nascimento date not null,
+genero varchar(1) check (genero in ('f','F','m','M','o','O')),
+morada varchar(200),
+cp varchar(8) check (cp like '%-%'),
+localidade varchar(50),
+email varchar(100) check (email like '%@%.%'),
+fotografia varbinary(max)
+)
+
+create table disciplinas(
+	codigo int identity primary key,
+	nome varchar(100) not null check (len(nome)>=2),
+	nr_modulos int not null check (nr_modulos>0),
+	ano_escolaridade int not null check (ano_escolaridade>=10)
+)
+
+
+create table notas(
+	nr_nota int identity primary key,
+	nprocesso int references Alunos(nprocesso) 
+		on delete cascade,
+	codigo_disciplina int references Disciplinas(codigo)
+		on delete cascade,
+	data_nota date not null check (data_nota<=getdate()),
+	nr_modulo int not null check (nr_modulo>0),
+	nota int not null check (nota>=0 and nota<=20)
+)

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFCD_9951_TrabalhoModelo_2021_22_WIP", "UFCD_9951_TrabalhoModelo_2021_22_WIP\UFCD_9951_TrabalhoModelo_2021_22_WIP.csproj", "{9903B47E-0452-49DA-88E6-DD7904889D45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9903B47E-0452-49DA-88E6-DD7904889D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9903B47E-0452-49DA-88E6-DD7904889D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9903B47E-0452-49DA-88E6-DD7904889D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9903B47E-0452-49DA-88E6-DD7904889D45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FFA8A55-B0D2-41C6-B321-28E5489289CF}
+	EndGlobalSection
+EndGlobal
