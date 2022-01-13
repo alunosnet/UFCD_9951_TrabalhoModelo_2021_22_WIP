@@ -4,13 +4,72 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="/public/bootstrap.min.css" rel="stylesheet" />
+    <link href="/public/estilos.css" rel="stylesheet" />
+    <script src="/public/jquery-3.5.1.slim.min.js"></script>
+    <script src="/public/bootstrap.bundle.min.js"></script>
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
+            <!--navbar-->
+             <!--Menu-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/index.aspx">PS - UFCD 9951</a>
+        <!--Botão hamburguer-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Botão hamburguer-->
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <!--Alunos-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Alunos</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="/Alunos/adicionar.aspx">Adicionar</a>
+                        <a class="dropdown-item" href="/Alunos/gerir.aspx">Gerir</a>
+                        <a class="dropdown-item" href="/Alunos/pesquisar.aspx">Pesquisar</a>
+                    </div>
+                </li>
+                <!--Alunos-->
+                <!--Disciplinas-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Disciplinas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                        <a class="dropdown-item" href="/Disciplinas/adicionar.aspx">Adicionar</a>
+                        <a class="dropdown-item" href="/Disciplinas/gerir.aspx">Gerir</a>
+                        <a class="dropdown-item" href="/Disciplinas/pesquisar.aspx">Pesquisar</a>
+                    </div>
+                </li>
+                <!--Disciplinas-->
+                <!--Notas-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        <a class="dropdown-item" href="/Notas/adicionar.aspx">Adicionar</a>
+                        <a class="dropdown-item" href="/Notas/gerir.aspx">Gerir</a>
+                        <a class="dropdown-item" href="/Notas/pesquisar.aspx">Pesquisar</a>
+                    </div>
+                </li>
+                <!--Notas-->
+                <!--Estatísticas-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estatísticas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item"  href="/Consultas/media_aluno.aspx">Média por aluno</a>
+                        <a class="dropdown-item"  href="/Consultas/melhor_aluno.aspx">Melhor aluno</a>
+                        <a class="dropdown-item"  href="/Consultas/nr_notas_disciplina.aspx">Nr de Notas Por Disciplina</a>
+                    </div>
+                </li>
+                <!--Estatísticas-->
+            </ul>
+        </div>
+    </nav>
+    <!--Menu-->
             <h1>Adicionar Aluno</h1>
-            <asp:FormView DefaultMode="Insert" ID="FormView1" runat="server" DataKeyNames="nprocesso" DataSourceID="SqlAlunos">
+            <asp:FormView  OnItemInserting="FormView1_ItemInserting" Width="100%" DefaultMode="Insert" ID="FormView1" runat="server" DataKeyNames="nprocesso" DataSourceID="SqlAlunos">
                 <EditItemTemplate>
                     nprocesso:
                     <asp:Label Text='<%# Eval("nprocesso") %>' runat="server" ID="nprocessoLabel1" /><br />
@@ -34,24 +93,25 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     Nome:
-                    <asp:TextBox placeholder="Insere o teu nome" Text='<%# Bind("nome") %>' runat="server" ID="nomeTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" placeholder="Insere o teu nome" Text='<%# Bind("nome") %>' runat="server" ID="nomeTextBox" /><br />
                     Data Nascimento:
-                    <asp:TextBox TextMode="Date" Text='<%# Bind("data_nascimento") %>' runat="server" ID="data_nascimentoTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" TextMode="Date" Text='<%# Bind("data_nascimento") %>' runat="server" ID="data_nascimentoTextBox" /><br />
                     Género:
-                    <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind("genero") %>'>
+                    <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" SelectedValue='<%# Bind("genero") %>'>
                         <asp:ListItem Text="Masculino" Value="M" />
                         <asp:ListItem Text="Feminino" Value="F" />
                         <asp:ListItem Text="Outro" Value="O" />
                     </asp:DropDownList>
                     <br />Morada:
-                    <asp:TextBox placeholder="A sua morada" Text='<%# Bind("morada") %>' runat="server" ID="moradaTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" placeholder="A sua morada" Text='<%# Bind("morada") %>' runat="server" ID="moradaTextBox" /><br />
                     Código postal:
-                    <asp:TextBox placeholder="O código postal" Text='<%# Bind("cp") %>' runat="server" ID="cpTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" placeholder="O código postal" Text='<%# Bind("cp") %>' runat="server" ID="cpTextBox" /><br />
                     Localidade:
-                    <asp:TextBox Text='<%# Bind("localidade") %>' runat="server" ID="localidadeTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" Text='<%# Bind("localidade") %>' runat="server" ID="localidadeTextBox" /><br />
                     Email:
-                    <asp:TextBox TextMode="Email" Text='<%# Bind("email") %>' runat="server" ID="emailTextBox" /><br />
-                    <asp:LinkButton runat="server" Text="Insert" CommandName="Insert" ID="InsertButton" CausesValidation="True" />&nbsp;<asp:LinkButton runat="server" Text="Cancel" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" />
+                    <asp:TextBox CssClass="form-control" TextMode="Email" Text='<%# Bind("email") %>' runat="server" ID="emailTextBox" /><br />
+                    <asp:FileUpload CssClass="form-control" ID="FileUpload1" runat="server" />
+                    <asp:LinkButton CssClass="btn btn-danger btn-lg" runat="server" Text="Insert" CommandName="Insert" ID="InsertButton" CausesValidation="True" />&nbsp;<asp:LinkButton CssClass="btn btn-info btn-lg" runat="server" Text="Cancel" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" />
                 </InsertItemTemplate>
                 <ItemTemplate>
                     nprocesso:
