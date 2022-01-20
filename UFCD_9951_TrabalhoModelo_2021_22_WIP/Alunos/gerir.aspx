@@ -68,7 +68,7 @@
     </nav>
             <!--Menu-->
             <h2>Gerir Alunos</h2>
-            <asp:GridView CssClass="table" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="nprocesso" DataSourceID="SqlAlunos" AllowSorting="True" AllowPaging="True">
+            <asp:GridView  OnRowDataBound="GridView1_RowDataBound" CssClass="table" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="nprocesso" DataSourceID="SqlAlunos" AllowSorting="True" AllowPaging="True">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True"></asp:CommandField>
                     <asp:BoundField DataField="nprocesso" HeaderText="nprocesso" ReadOnly="True" InsertVisible="False" SortExpression="nprocesso"></asp:BoundField>
@@ -79,6 +79,11 @@
                     <asp:BoundField DataField="cp" HeaderText="cp" SortExpression="cp"></asp:BoundField>
                     <asp:BoundField DataField="localidade" HeaderText="localidade" SortExpression="localidade"></asp:BoundField>
                     <asp:BoundField DataField="email" HeaderText="email" SortExpression="email"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Fotografia">
+                        <ItemTemplate>
+                            <asp:Image ID="fotografia" runat="server" Width="200px" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
 
