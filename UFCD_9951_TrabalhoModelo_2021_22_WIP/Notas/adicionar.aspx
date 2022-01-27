@@ -69,7 +69,7 @@
             </nav>
             <!--Menu-->
             <h1>Registar nota</h1>
-            <asp:FormView ID="FormView1" DefaultMode="Insert" runat="server" DataKeyNames="nr_nota" DataSourceID="SqlNotas">
+            <asp:FormView ID="FormView1" Width="100%" DefaultMode="Insert" runat="server" DataKeyNames="nr_nota" DataSourceID="SqlNotas">
                 <EditItemTemplate>
                     nr_nota:
                     <asp:Label Text='<%# Eval("nr_nota") %>' runat="server" ID="nr_notaLabel1" /><br />
@@ -87,19 +87,19 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     nprocesso:
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlAlunos" DataTextField="nome" DataValueField="nprocesso" SelectedValue='<%# Bind("nprocesso") %>'></asp:DropDownList>
+                    <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" DataSourceID="SqlAlunos" DataTextField="nome" DataValueField="nprocesso" SelectedValue='<%# Bind("nprocesso") %>'></asp:DropDownList>
                     <asp:SqlDataSource runat="server" ID="SqlAlunos" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [nome], [nprocesso] FROM [alunos] ORDER BY [nome]"></asp:SqlDataSource>
                     <br />
                     codigo_disciplina:
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDisciplinas" DataTextField="Nome_Ano" DataValueField="codigo"></asp:DropDownList><asp:SqlDataSource runat="server" ID="SqlDisciplinas" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [codigo], concat([nome], [ano_escolaridade]) as Nome_Ano FROM [disciplinas] ORDER BY [nome]"></asp:SqlDataSource>
+                    <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" DataSourceID="SqlDisciplinas" DataTextField="Nome_Ano" DataValueField="codigo" SelectedValue='<%# Bind("codigo_disciplina") %>'></asp:DropDownList><asp:SqlDataSource runat="server" ID="SqlDisciplinas" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [codigo], concat([nome], [ano_escolaridade]) as Nome_Ano FROM [disciplinas] ORDER BY [nome]"></asp:SqlDataSource>
                     <br />
                     data_nota:
-                    <asp:TextBox TextMode="Date" Text='<%# Bind("data_nota") %>' runat="server" ID="data_notaTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" TextMode="Date" Text='<%# Bind("data_nota") %>' runat="server" ID="data_notaTextBox" /><br />
                     nr_modulo:
-                    <asp:TextBox TextMode="Number" Min="1" Max="20" Text='<%# Bind("nr_modulo") %>' runat="server" ID="nr_moduloTextBox" /><br />
+                    <asp:TextBox CssClass="form-control" TextMode="Number" Min="1" Max="20" Text='<%# Bind("nr_modulo") %>' runat="server" ID="nr_moduloTextBox" /><br />
                     nota:
-                    <asp:TextBox TextMode="Number" Min="1" Max="20" Text='<%# Bind("nota") %>' runat="server" ID="notaTextBox" /><br />
-                    <asp:LinkButton runat="server" Text="Insert" CommandName="Insert" ID="InsertButton" CausesValidation="True" />&nbsp;<asp:LinkButton runat="server" Text="Cancel" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" />
+                    <asp:TextBox CssClass="form-control" TextMode="Number" Min="1" Max="20" Text='<%# Bind("nota") %>' runat="server" ID="notaTextBox" /><br />
+                    <asp:LinkButton CssClass="btn btn-lg btn-danger" runat="server" Text="Insert" CommandName="Insert" ID="InsertButton" CausesValidation="True" />&nbsp;<asp:LinkButton CssClass="btn btn-lg btn-info" runat="server" Text="Cancel" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" />
                 </InsertItemTemplate>
                 <ItemTemplate>
                     nr_nota:
@@ -117,10 +117,11 @@
                     <asp:LinkButton runat="server" Text="New" CommandName="New" ID="NewButton" CausesValidation="False" />
                 </ItemTemplate>
             </asp:FormView>
-            <asp:SqlDataSource runat="server" ID="SqlNotas" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' InsertCommand="INSERT INTO notas(nprocesso, codigo_disciplina, data_nota, nr_modulo, nota) VALUES (@nprocesso, @codigo, @data_nota, @nr_modulo, @nota)" SelectCommand="SELECT * FROM [notas]">
+            <asp:SqlDataSource runat="server" ID="SqlNotas" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' 
+                InsertCommand="INSERT INTO notas(nprocesso, codigo_disciplina, data_nota, nr_modulo, nota) VALUES (@nprocesso, @codigo_disciplina, @data_nota, @nr_modulo, @nota)" SelectCommand="SELECT * FROM [notas]">
                 <InsertParameters>
                     <asp:Parameter Name="nprocesso"></asp:Parameter>
-                    <asp:Parameter Name="codigo"></asp:Parameter>
+                    <asp:Parameter Name="codigo_disciplina"></asp:Parameter>
                     <asp:Parameter DbType="Date" Name="data_nota"></asp:Parameter>
                     <asp:Parameter Name="nr_modulo"></asp:Parameter>
                     <asp:Parameter Name="nota"></asp:Parameter>

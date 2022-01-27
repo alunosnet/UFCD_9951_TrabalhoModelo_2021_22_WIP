@@ -83,6 +83,21 @@
                     <asp:ControlParameter ControlID="TextBox1" PropertyName="Text" Name="nome" Type="String"></asp:ControlParameter>
                 </SelectParameters>
             </asp:SqlDataSource>
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="nr_nota" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="nr_nota" HeaderText="nr_nota" ReadOnly="True" InsertVisible="False" SortExpression="nr_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nprocesso" HeaderText="nprocesso" SortExpression="nprocesso"></asp:BoundField>
+                    <asp:BoundField DataField="codigo_disciplina" HeaderText="codigo_disciplina" SortExpression="codigo_disciplina"></asp:BoundField>
+                    <asp:BoundField DataField="data_nota" HeaderText="data_nota" SortExpression="data_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nr_modulo" HeaderText="nr_modulo" SortExpression="nr_modulo"></asp:BoundField>
+                    <asp:BoundField DataField="nota" HeaderText="nota" SortExpression="nota"></asp:BoundField>
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT * FROM [notas] WHERE ([nprocesso] = @nprocesso)">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="GridView1" PropertyName="SelectedValue" Name="nprocesso" Type="Int32"></asp:ControlParameter>
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
     </form>
 </body>

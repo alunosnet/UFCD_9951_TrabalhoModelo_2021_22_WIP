@@ -68,6 +68,22 @@
                 </div>
             </nav>
             <!--Menu-->
+            <asp:GridView CssClass="table" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="nr_nota" DataSourceID="SqlNotas">
+                <Columns>
+                    <asp:CommandField ShowDeleteButton="True"></asp:CommandField>
+                    <asp:BoundField DataField="nr_nota" HeaderText="nr_nota" ReadOnly="True" InsertVisible="False" SortExpression="nr_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nprocesso" HeaderText="nprocesso" SortExpression="nprocesso"></asp:BoundField>
+                    <asp:BoundField DataField="codigo_disciplina" HeaderText="codigo_disciplina" SortExpression="codigo_disciplina"></asp:BoundField>
+                    <asp:BoundField DataField="data_nota" HeaderText="data_nota" SortExpression="data_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nr_modulo" HeaderText="nr_modulo" SortExpression="nr_modulo"></asp:BoundField>
+                    <asp:BoundField DataField="nota" HeaderText="nota" SortExpression="nota"></asp:BoundField>
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource runat="server" ID="SqlNotas" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [notas] WHERE nr_nota=@nr_nota" SelectCommand="SELECT * FROM [notas]">
+                <DeleteParameters>
+                    <asp:Parameter Name="nr_nota"></asp:Parameter>
+                </DeleteParameters>
+            </asp:SqlDataSource>
         </div>
     </form>
 </body>

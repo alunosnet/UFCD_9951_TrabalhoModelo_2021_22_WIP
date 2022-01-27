@@ -68,6 +68,25 @@
                 </div>
             </nav>
             <!--Menu-->
+            Nota mínima:<asp:TextBox CssClass="form-control" ID="tbMin" runat="server"></asp:TextBox>
+            Nota máxima:<asp:TextBox CssClass="form-control" ID="tbMax" runat="server"></asp:TextBox>
+            <asp:Button CssClass="btn btn-lg btn-info" ID="Button1" runat="server" Text="Pesquisar" />
+            <asp:GridView CssClass="table" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="nr_nota" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="nr_nota" HeaderText="nr_nota" ReadOnly="True" InsertVisible="False" SortExpression="nr_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nprocesso" HeaderText="nprocesso" SortExpression="nprocesso"></asp:BoundField>
+                    <asp:BoundField DataField="codigo_disciplina" HeaderText="codigo_disciplina" SortExpression="codigo_disciplina"></asp:BoundField>
+                    <asp:BoundField DataField="data_nota" HeaderText="data_nota" SortExpression="data_nota"></asp:BoundField>
+                    <asp:BoundField DataField="nr_modulo" HeaderText="nr_modulo" SortExpression="nr_modulo"></asp:BoundField>
+                    <asp:BoundField DataField="nota" HeaderText="nota" SortExpression="nota"></asp:BoundField>
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT * FROM [notas] WHERE (([nota] >= @nota) AND ([nota] <= @nota2))">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="tbMin" PropertyName="Text" DefaultValue="0" Name="nota" Type="Int32"></asp:ControlParameter>
+                    <asp:ControlParameter ControlID="tbMax" PropertyName="Text" DefaultValue="20" Name="nota2" Type="Int32"></asp:ControlParameter>
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
     </form>
 </body>
